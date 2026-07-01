@@ -109,14 +109,21 @@
       </p>
       <p>
         O Baque usa essa permissão com <b>um único propósito: contar
-        rolagens/vídeos</b> nos apps Instagram, TikTok e CapCut, para
-        alimentar o seu contador diário. O serviço:
+        rolagens/vídeos</b> no Instagram e no TikTok (incluindo variantes
+        regionais do app), para alimentar o seu contador diário. Em termos
+        técnicos, o serviço é restrito pelo próprio sistema Android
+        (<code>packageNames</code>) a esses dois aplicativos, e verifica apenas
+        o identificador técnico do elemento na tela — algo como
+        <code>clips_viewer_container</code> — para saber se você está no
+        carrossel de vídeos curtos. Ele detecta somente dois tipos de evento:
+        "a tela rolou" e "a janela mudou". Com base nisso, o serviço:
       </p>
       <ul class="legal-list">
-        <li>Não lê o conteúdo de mensagens, comentários ou textos digitados;</li>
+        <li>Não lê nomes de usuário, legendas, comentários ou mensagens;</li>
+        <li>Não lê o conteúdo de textos digitados, nem captura o que você escreve em nenhum campo;</li>
         <li>Não tira prints nem grava a tela;</li>
-        <li>Não monitora nenhum outro aplicativo além dos listados acima;</li>
-        <li>Não envia o conteúdo da tela para nenhum servidor — o processamento é local, no seu aparelho.</li>
+        <li>Não monitora nenhum outro aplicativo além dos listados acima (WhatsApp, bancos, e-mails etc. ficam de fora, por configuração do sistema);</li>
+        <li>Não envia o conteúdo da tela para nenhum servidor — o processamento acontece inteiramente no seu aparelho, e apenas o contador numérico resultante fica salvo localmente.</li>
       </ul>
       <p>
         Você pode revogar essa permissão a qualquer momento em
