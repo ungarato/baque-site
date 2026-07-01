@@ -4,22 +4,28 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>baque. — Reels têm hora. Você tem o controle.</title>
-<meta name="description" content="Baque é o app que limita Reels e Shorts no seu ritmo, troca o scroll infinito por uma leitura de 3 minutos e organiza sua rotina. Feito para quem tem TDAH." />
+<meta name="description" content="Baque limita Reels e Shorts no seu ritmo, troca o scroll infinito por uma leitura de 3 minutos e organiza sua rotina. Feito para quem tem TDAH." />
+<meta property="og:title" content="baque. — Reels têm hora." />
+<meta property="og:description" content="O app que devolve o controle do seu tempo. Beta fechado, 30 vagas." />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Newsreader:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-header">
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header class="site-header is-top" id="siteHeader">
   <div class="wrap header-inner">
-    <a href="#top" class="wordmark">baque<span class="dot">.</span></a>
+    <a href="#top" class="wordmark" aria-label="Baque">baque<span class="dot">.</span></a>
     <nav class="nav-links">
-      <a href="#como-funciona">Como funciona</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#como">Como funciona</a>
+      <a href="#dentro">Por dentro</a>
       <a href="#recursos">Recursos</a>
-      <a href="#confianca">Confiança</a>
-      <a href="#beta">Beta</a>
     </nav>
     <a href="#beta" class="btn btn-primary btn-small">Quero testar</a>
   </div>
@@ -27,171 +33,365 @@
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
     <div class="wrap hero-inner">
       <div class="hero-copy">
-        <div class="kicker"><span class="dot-red"></span>BETA FECHADO — 30 VAGAS</div>
-        <h1>Pare de perder<br>a tarde pro<br><span class="accent-underline">Reels</span>.</h1>
-        <p class="lede">Baque limita quantos Reels e Shorts você assistiu por dia — e quando o limite chega, troca o scroll infinito por uma leitura de 3 minutos sobre o que você realmente gosta.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#beta">Quero ser beta tester</a>
-          <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
+        <div class="kicker reveal"><span class="pulse-dot"></span>BETA FECHADO · 30 VAGAS</div>
+        <h1 class="hero-title">
+          <span class="line reveal" data-d="1">Reels têm hora.</span>
+          <span class="line reveal" data-d="2">Você tem o <em>controle</em>.</span>
+        </h1>
+        <p class="lede reveal" data-d="3">
+          Baque acompanha quantos Reels e Shorts você assiste por dia. Quando o limite
+          chega, o scroll infinito vira uma leitura de 3 minutos sobre o que importa pra você.
+        </p>
+        <div class="hero-ctas reveal" data-d="4">
+          <a class="btn btn-primary btn-mag" href="#beta">Quero ser beta tester</a>
+          <a class="btn btn-ghost" href="#como">
+            Ver como funciona
+            <svg viewBox="0 0 24 24" class="ic-inline"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
-        <p class="hero-note">Android · Gratuito durante o beta · Sem cartão de crédito</p>
+        <p class="hero-note reveal" data-d="5">Android · Grátis durante o beta · Sem cartão</p>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="phone-mock">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="mock-wordmark">baque<span class="dot">.</span></div>
-            <div class="mock-hero-card">
-              <div class="mock-card-row">
-                <div class="mock-avatar"></div>
-                <div class="mock-card-text">
-                  <div class="mock-name">Gustavo</div>
-                  <div class="mock-limit">Limite: 5 Reels/dia</div>
+      <div class="hero-stage reveal" data-d="3">
+        <!-- DEVICE: tela de Perfil -->
+        <div class="device device-float" id="heroDevice">
+          <div class="device-frame">
+            <div class="device-island"></div>
+            <div class="device-screen screen-cream">
+              <div class="s-wordmark">baque<span class="dot">.</span></div>
+              <div class="s-h1">Perfil.</div>
+
+              <div class="s-hero-card">
+                <div class="s-card-top">
+                  <div class="s-avatar"></div>
+                  <div>
+                    <div class="s-name">Gustavo</div>
+                    <div class="s-limit">Limite: 5 Reels/dia</div>
+                  </div>
+                  <svg viewBox="0 0 24 24" class="s-edit"><path d="M4 20h4L18 10l-4-4L4 16v4Z"/><path d="M14 6l4 4"/></svg>
+                </div>
+                <div class="s-divider"></div>
+                <div class="s-taglabel">INTERESSES</div>
+                <div class="s-chips">
+                  <span>Tecnologia</span><span>Foco</span><span>Saúde</span>
                 </div>
               </div>
-              <div class="mock-divider"></div>
-              <div class="mock-tag-label">INTERESSES</div>
-              <div class="mock-chips">
-                <span class="mock-chip">Tecnologia</span>
-                <span class="mock-chip">Foco</span>
-                <span class="mock-chip">Saúde</span>
+
+              <div class="s-row">
+                <span class="s-row-ic"><svg viewBox="0 0 24 24"><path d="M4 20h4L18 10l-4-4L4 16v4Z"/><path d="M14 6l4 4"/></svg></span>
+                <div class="s-row-tx"><b>Editar perfil</b><i>Nome, avatar, limite, interesses</i></div>
+                <svg viewBox="0 0 24 24" class="s-chev"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+              <div class="s-row">
+                <span class="s-row-ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2Z"/></svg></span>
+                <div class="s-row-tx"><b>Meus objetivos</b><i>Defina o seu porquê</i></div>
+                <svg viewBox="0 0 24 24" class="s-chev"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+              <div class="s-row">
+                <span class="s-row-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>
+                <div class="s-row-tx"><b>Rotinas semanais</b><i>3 rotinas ativas</i></div>
+                <svg viewBox="0 0 24 24" class="s-chev"><path d="M9 6l6 6-6 6"/></svg>
               </div>
             </div>
-            <div class="mock-alert">
-              <div class="mock-alert-num">5/5</div>
-              <div class="mock-alert-text">Limite atingido.<br>Hora de uma pausa diferente.</div>
+          </div>
+          <div class="device-shadow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#manifesto" class="scroll-cue reveal" data-d="6" aria-label="Rolar">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ══════════════════ MARQUEE ══════════════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>MENOS SCROLL</span><span class="m-dot">✦</span>
+      <span>MAIS PRESENÇA</span><span class="m-dot">✦</span>
+      <span>SEU RITMO</span><span class="m-dot">✦</span>
+      <span>SUA ROTINA</span><span class="m-dot">✦</span>
+      <span>FOCO DE VOLTA</span><span class="m-dot">✦</span>
+      <span>MENOS SCROLL</span><span class="m-dot">✦</span>
+      <span>MAIS PRESENÇA</span><span class="m-dot">✦</span>
+      <span>SEU RITMO</span><span class="m-dot">✦</span>
+      <span>SUA ROTINA</span><span class="m-dot">✦</span>
+      <span>FOCO DE VOLTA</span><span class="m-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ MANIFESTO / PROBLEMA ══════════════════ -->
+  <section class="manifesto" id="manifesto">
+    <div class="wrap">
+      <p class="manifesto-text reveal">
+        Você abre o app pra ver <span class="hl-r">uma</span> notificação. Vinte minutos
+        depois, ainda está lá — sem lembrar como chegou no décimo vídeo. Pra quem tem
+        <span class="hl-g">TDAH</span>, o scroll infinito não é falta de força de vontade:
+        é um sistema desenhado pra nunca te deixar ir. Baque não te bloqueia na marra.
+        Ele te dá <span class="hl-r">uma saída melhor</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════ BRAND BAND ══════════════════ -->
+  <section class="brand-band">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="brand-glow" aria-hidden="true"></div>
+    <div class="wrap brand-inner">
+      <div class="brand-word reveal">baque<span class="dot">.</span></div>
+      <p class="brand-tag reveal" data-d="2">
+        O contrapeso que faltava entre você e o feed infinito.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════ COMO FUNCIONA ══════════════════ -->
+  <section class="how" id="como">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot-red"></span>COMO FUNCIONA</div>
+        <h2>Quatro passos,<br>todo dia.</h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="tl-step reveal">
+          <div class="tl-num">01</div>
+          <div class="tl-body">
+            <h3>Defina seu limite</h3>
+            <p>Você escolhe quantos Reels ou Shorts fazem sentido por dia. Sem julgamento — o número é seu, e muda quando quiser.</p>
+          </div>
+        </li>
+        <li class="tl-step reveal">
+          <div class="tl-num">02</div>
+          <div class="tl-body">
+            <h3>Baque conta por você</h3>
+            <p>Em segundo plano, o app acompanha quantos vídeos passaram. Só isso — nada de ler mensagens ou bisbilhotar outros apps.</p>
+          </div>
+        </li>
+        <li class="tl-step reveal">
+          <div class="tl-num">03</div>
+          <div class="tl-body">
+            <h3>O limite chega</h3>
+            <p>Em vez de travar a tela, Baque te oferece uma leitura curta sobre um tema que você escolheu: tecnologia, saúde, história, filosofia.</p>
+          </div>
+        </li>
+        <li class="tl-step reveal">
+          <div class="tl-num">04</div>
+          <div class="tl-body">
+            <h3>Você volta no controle</h3>
+            <p>Três minutos depois, a escolha é sua de novo — agora com a cabeça mais leve, não no piloto automático.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════════════ POR DENTRO (screenshots) ══════════════════ -->
+  <section class="inside" id="dentro">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot-red"></span>POR DENTRO</div>
+        <h2>O app, na prática.</h2>
+      </div>
+    </div>
+
+    <div class="inside-rail">
+      <div class="inside-track">
+
+        <!-- Tela: contador -->
+        <figure class="inside-item reveal">
+          <div class="device device-sm">
+            <div class="device-frame">
+              <div class="device-island"></div>
+              <div class="device-screen screen-cream s-center">
+                <div class="s-wordmark">baque<span class="dot">.</span></div>
+                <div class="s-counter">
+                  <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle class="ring-bg" cx="60" cy="60" r="52"/>
+                    <circle class="ring-fg" cx="60" cy="60" r="52" data-pct="60"/>
+                  </svg>
+                  <div class="ring-label">
+                    <span class="count" data-to="3">0</span><span class="ring-den">/5</span>
+                    <small>Reels hoje</small>
+                  </div>
+                </div>
+                <div class="s-counter-cap">Você ainda tem <b>2</b> hoje.<br>Tá indo bem.</div>
+              </div>
             </div>
           </div>
-        </div>
+          <figcaption><b>Contador do dia</b>Sempre à vista, nunca punitivo.</figcaption>
+        </figure>
+
+        <!-- Tela: leitura 3 min -->
+        <figure class="inside-item reveal" data-d="2">
+          <div class="device device-sm">
+            <div class="device-frame">
+              <div class="device-island"></div>
+              <div class="device-screen screen-dark">
+                <div class="sd-label">LEITURA DE 3 MINUTOS</div>
+                <div class="sd-title">Como o cérebro com TDAH busca novidade</div>
+                <div class="sd-meta">drauziovarella.uol.com.br</div>
+                <div class="sd-lines">
+                  <span></span><span></span><span></span><span style="width:86%"></span>
+                  <span></span><span></span><span style="width:72%"></span>
+                </div>
+                <div class="sd-btn">Concluir leitura</div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Leitura de 3 minutos</b>A troca que faz a diferença.</figcaption>
+        </figure>
+
+        <!-- Tela: agenda/alarme -->
+        <figure class="inside-item reveal" data-d="3">
+          <div class="device device-sm">
+            <div class="device-frame">
+              <div class="device-island"></div>
+              <div class="device-screen screen-cream">
+                <div class="s-wordmark">baque<span class="dot">.</span></div>
+                <div class="s-h1">Tarefas.</div>
+                <div class="s-task">
+                  <div class="s-task-time">07<span>:</span>30</div>
+                  <div class="s-task-body">
+                    <b>Caminhada matinal</b>
+                    <i>Alarme ativo · Seg, Qua, Sex</i>
+                  </div>
+                  <span class="s-task-bell"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-6 6c0 5-2 6-2 6h16s-2-1-2-6a6 6 0 0 0-6-6Z"/></svg></span>
+                </div>
+                <div class="s-task s-task-soft">
+                  <div class="s-task-time">14<span>:</span>00</div>
+                  <div class="s-task-body">
+                    <b>Estudar 25 min</b>
+                    <i>Sincronizado · Google Agenda</i>
+                  </div>
+                  <span class="s-task-bell"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-6 6c0 5-2 6-2 6h16s-2-1-2-6a6 6 0 0 0-6-6Z"/></svg></span>
+                </div>
+                <div class="s-sync">
+                  <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>
+                  Sincroniza nos dois sentidos
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Agenda com alarme</b>Em sintonia com o Google Agenda.</figcaption>
+        </figure>
+
       </div>
     </div>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="problem">
-    <div class="wrap problem-inner">
-      <p class="problem-text">
-        Você abre o Instagram pra ver uma notificação. Vinte minutos depois, ainda está lá —
-        e nem lembra como chegou no décimo vídeo. Pra quem tem <strong>TDAH</strong>, o scroll
-        infinito não é falta de força de vontade: é um sistema de recompensa desenhado pra
-        nunca te deixar ir. Baque não tenta te bloquear na força. Ele te dá uma saída melhor.
-      </p>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="how">
+  <!-- ══════════════════ RECURSOS (bento) ══════════════════ -->
+  <section class="features" id="recursos">
     <div class="wrap">
-      <div class="section-head">
-        <div class="kicker"><span class="dot-red"></span>COMO FUNCIONA</div>
-        <h2>Quatro passos, todo dia.</h2>
-      </div>
-
-      <div class="how-grid">
-        <div class="how-step">
-          <div class="how-num">01</div>
-          <h3>Defina seu limite</h3>
-          <p>Você escolhe quantos Reels ou Shorts faz sentido assistir por dia. Sem julgamento — o número é seu.</p>
-        </div>
-        <div class="how-step">
-          <div class="how-num">02</div>
-          <h3>Baque conta por você</h3>
-          <p>Em segundo plano, o app acompanha quantos vídeos passaram. Só isso — nada de ler suas mensagens ou outros apps.</p>
-        </div>
-        <div class="how-step">
-          <div class="how-num">03</div>
-          <h3>O limite chega</h3>
-          <p>Em vez de travar a tela, Baque te oferece uma leitura curta sobre um assunto que você escolheu: tecnologia, saúde, história, filosofia...</p>
-        </div>
-        <div class="how-step">
-          <div class="how-num">04</div>
-          <h3>Você volta no controle</h3>
-          <p>Três minutos depois, a escolha é sua de novo — só que agora com a cabeça livre, não no automático.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RECURSOS -->
-  <section id="recursos" class="features">
-    <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="kicker"><span class="dot-red"></span>RECURSOS</div>
-        <h2>Não é só um bloqueador.</h2>
+        <h2>Não é só um<br>bloqueador.</h2>
       </div>
 
-      <div class="features-grid">
-        <article class="feature-card">
-          <div class="feature-icon">⏱</div>
-          <h3>Limite inteligente de Reels</h3>
-          <p>Defina quantos vídeos por dia fazem sentido pra você — e ajuste sempre que quiser.</p>
+      <div class="bento">
+        <!-- destaque: limite -->
+        <article class="tile tile-wide tile-dark reveal">
+          <div class="grain" aria-hidden="true"></div>
+          <div class="tile-limit">
+            <div class="tile-limit-copy">
+              <span class="tile-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 13V9"/><path d="M9 2h6"/><path d="m18 5 1.6-1.6"/></svg></span>
+              <h3>Limite inteligente de Reels</h3>
+              <p>Defina quantos vídeos por dia fazem sentido — e ajuste sempre que precisar. O número é seu.</p>
+            </div>
+            <div class="tile-limit-ring">
+              <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="ring-bg ring-bg-dark" cx="60" cy="60" r="52"/>
+                <circle class="ring-fg" cx="60" cy="60" r="52" data-pct="60"/>
+              </svg>
+              <div class="ring-label ring-label-dark">
+                <span class="count" data-to="3">0</span><span class="ring-den">/5</span>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">📖</div>
+
+        <article class="tile reveal" data-d="2">
+          <span class="tile-ic"><svg viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 5a2 2 0 0 1 2-2h4a3 3 0 0 1 3 3 3 3 0 0 1 3-3h4a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1h-6a2 2 0 0 0-2 2 2 2 0 0 0-2-2H4a1 1 0 0 1-1-1Z"/></svg></span>
           <h3>Leitura de 3 minutos</h3>
-          <p>Quando o limite chega, Baque sugere um artigo curto nos seus temas de interesse, em vez de uma tela travada.</p>
+          <p>Quando o limite chega, um artigo curto nos seus temas — em vez de uma tela travada.</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">⏰</div>
-          <h3>Alarmes de tarefa com agenda</h3>
-          <p>Crie tarefas com alarme de verdade, sincronizadas com o Google Calendário — dos dois lados.</p>
+
+        <article class="tile reveal" data-d="3">
+          <span class="tile-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 13v-3l2 1"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg></span>
+          <h3>Alarmes de verdade</h3>
+          <p>Tarefas que tocam, despertam a tela e aparecem em cima de tudo.</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">🗓</div>
+
+        <article class="tile reveal">
+          <span class="tile-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></span>
           <h3>Rotina semanal</h3>
-          <p>Monte os blocos fixos da sua semana e deixe o Baque lembrar por você.</p>
+          <p>Monte os blocos fixos da semana e deixe o Baque lembrar por você.</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">📄</div>
-          <h3>Relatório semanal em PDF</h3>
-          <p>Exporte um resumo da sua semana — pronto pra levar pra terapia.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">⏸</div>
+
+        <article class="tile reveal" data-d="2">
+          <span class="tile-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></span>
           <h3>Pausa rápida</h3>
-          <p>Um atalho nas configurações rápidas do Android pra pausar o Baque quando você realmente precisar.</p>
+          <p>Um atalho nas configurações rápidas pra pausar o Baque quando precisar.</p>
+        </article>
+
+        <!-- destaque: relatório -->
+        <article class="tile tile-wide tile-accent reveal" data-d="3">
+          <div class="tile-report">
+            <div>
+              <span class="tile-ic tile-ic-accent"><svg viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h4"/></svg></span>
+              <h3>Relatório semanal em PDF</h3>
+              <p>Exporte um resumo da sua semana, pronto pra levar pra terapia.</p>
+            </div>
+            <div class="report-doc" aria-hidden="true">
+              <span></span><span></span><span style="width:60%"></span><span></span><span style="width:75%"></span>
+            </div>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CONFIANÇA -->
-  <section id="confianca" class="trust">
-    <div class="wrap trust-inner">
-      <div class="section-head">
-        <div class="kicker"><span class="dot-green"></span>CONFIANÇA</div>
-        <h2>Por que o Baque pede permissão de Acessibilidade?</h2>
-      </div>
+  <!-- ══════════════════ CONFIANÇA ══════════════════ -->
+  <section class="trust">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap trust-inner reveal">
+      <div class="kicker kicker-on-dark"><span class="dot-green"></span>TRANSPARÊNCIA</div>
+      <h2>Por que pedimos permissão<br>de Acessibilidade?</h2>
       <p class="trust-text">
-        Pra contar quantos Reels e Shorts você assistiu, o Android exige essa permissão —
-        é a única forma de medir isso sem acesso ao servidor do Instagram ou TikTok.
-        O Baque usa essa permissão com um único propósito: <strong>contar vídeos</strong>.
-        Ele não lê suas mensagens, não enxerga outros apps e não foi feito pra vigiar nada
-        além disso. Se um dia isso mudar, vai estar escrito aqui, em português, sem letra miúda.
+        Pra contar quantos Reels e Shorts você assiste, o Android exige essa permissão —
+        é a única forma de medir isso sem acessar os servidores do Instagram ou TikTok.
+        O Baque usa essa permissão com <span class="hl-g">um único propósito: contar vídeos</span>.
+        Não lê suas mensagens, não enxerga outros apps, não vigia nada além disso.
+        Se um dia isso mudar, vai estar escrito aqui — em português, sem letra miúda.
       </p>
     </div>
   </section>
 
-  <!-- BETA CTA -->
-  <section id="beta" class="beta">
-    <div class="wrap beta-inner">
-      <div class="kicker kicker-on-dark"><span class="dot-green"></span>BETA FECHADO</div>
-      <h2>Você pode ser<br>um dos 30.</h2>
+  <!-- ══════════════════ BETA ══════════════════ -->
+  <section class="beta" id="beta">
+    <div class="beta-glow" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap beta-inner reveal">
+      <div class="kicker kicker-on-dark"><span class="pulse-dot pulse-dot-green"></span>BETA FECHADO · 30 VAGAS</div>
+      <h2>Você pode ser<br>um dos <em>30</em>.</h2>
       <p class="beta-text">
         Estamos abrindo um grupo pequeno de testers antes do lançamento — gente que lida
         com TDAH ou que só quer o controle de volta. Em troca: acesso antecipado e voz
-        direta no que construímos a seguir.
+        direta no que vem a seguir.
       </p>
       <a
-        class="btn btn-primary btn-large"
-        href="mailto:gustavo@baliza.ai?subject=Quero%20ser%20beta%20tester%20do%20Baque&body=Oi%2C%20Gustavo!%0A%0AQuero%20participar%20do%20beta%20do%20Baque.%0A%0AMeu%20celular%20%C3%A9%20Android%20e%20uso%20Reels%2FShorts%20%5Bsempre%20%2F%20de%20vez%20em%20quando%5D.%0A%0AObrigado!"
+        class="btn btn-primary btn-large btn-mag"
+        href="mailto:gustavo.ungaratoufrj@gmail.com?subject=Quero%20ser%20beta%20tester%20do%20Baque&body=Oi%2C%20Gustavo!%0A%0AQuero%20participar%20do%20beta%20do%20Baque.%0A%0AMeu%20celular%20%C3%A9%20Android%20e%20uso%20Reels%2FShorts%20%5Bsempre%20%2F%20de%20vez%20em%20quando%5D.%0A%0AObrigado!"
       >Quero ser beta tester</a>
-      <p class="beta-note">Abre seu e-mail com uma mensagem pronta — só conferir e enviar.</p>
+      <p class="beta-note">Abre seu e-mail com a mensagem pronta — é só conferir e enviar.</p>
     </div>
   </section>
 
@@ -199,9 +399,10 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <div class="wordmark wordmark-small">baque<span class="dot">.</span></div>
+    <a href="#top" class="wordmark">baque<span class="dot">.</span></a>
     <p>Feito para quem tem TDAH e quer o controle de volta.</p>
-    <a href="mailto:gustavo@baliza.ai">gustavo@baliza.ai</a>
+    <a href="mailto:gustavo.ungaratoufrj@gmail.com" class="footer-mail">gustavo.ungaratoufrj@gmail.com</a>
+    <a href="privacidade.html" class="footer-legal">Política de Privacidade</a>
   </div>
 </footer>
 

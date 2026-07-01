@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════════════════
+   Páginas legais (política de privacidade, termos) —
+   reaproveita tokens de styles.css, adiciona só o necessário
+   para texto corrido longo.
+   ═══════════════════════════════════════════════════════════ */
+
+.legal-main { padding: 150px 0 100px; background: var(--bg); }
+.legal-wrap { max-width: 760px; }
+
+.legal-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 10px; }
+.legal-updated { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-hint); letter-spacing: .04em; margin-bottom: 28px; }
+.legal-lede { font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 40px; }
+.legal-lede a { color: var(--primary); font-weight: 600; }
+
+.legal-toc {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 24px 28px; margin-bottom: 56px;
+}
+.legal-toc a { font-size: 14px; font-weight: 600; color: var(--text-secondary); transition: color .2s; }
+.legal-toc a:hover { color: var(--primary); }
+
+.legal-wrap section { padding: 34px 0; border-top: 1px solid var(--border); }
+.legal-wrap section:first-of-type { border-top: none; }
+
+.legal-wrap h2 {
+  font-size: clamp(20px, 2.6vw, 26px); margin-bottom: 14px;
+  scroll-margin-top: 96px;
+}
+.legal-wrap p { font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 14px; }
+.legal-wrap p:last-child { margin-bottom: 0; }
+.legal-wrap a { color: var(--primary); font-weight: 600; }
+
+.legal-list { margin: 0 0 14px; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.legal-list li { font-size: 15.5px; line-height: 1.6; color: var(--text-secondary); }
+.legal-list b { color: var(--text-primary); }
+
+.legal-back { margin-top: 48px; }
+
+@media (max-width: 620px) {
+  .legal-toc { grid-template-columns: 1fr; }
+  .legal-main { padding-top: 120px; }
+}

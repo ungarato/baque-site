@@ -1,0 +1,4 @@
+# Ferramentas locais de preview — não fazem parte do site publicado na Vercel
+.claude/
+server.ps1
+preview.bat
